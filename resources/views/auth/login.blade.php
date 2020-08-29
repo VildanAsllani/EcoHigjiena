@@ -1,4 +1,4 @@
-@extends('layouts.app')
+{{-- @extends('layouts.app')
 
 @section('content')
 <div class="container">
@@ -70,4 +70,32 @@
         </div>
     </div>
 </div>
-@endsection
+@endsection --}}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoHigjiena - Login</title>
+    <link rel="icon" href="{{asset('images/icon.png')}}">
+    <link rel="stylesheet" href="{{asset('css/app.css')}}">
+
+</head>
+<body>
+<div class="login-div">
+    <h1>ECOHIGJIENA</h1>
+    <form method="POST" action="{{ route('login') }}">
+        @csrf
+        <input type="email" placeholder="Email" class="text-input" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+        <input type="password" placeholder="Password" class="text-input" name="password" required autocomplete="current-password">
+        <button type="submit" class="submit-input btn btn-primary">LOGIN</button>
+        @error('email')
+            <span class="invalid-feedback">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror
+    </form>
+</div>
+</body>
+</html>
