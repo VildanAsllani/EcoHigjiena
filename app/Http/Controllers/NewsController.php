@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\News;
+use Validator;
 use Illuminate\Http\Request;
 use Str;
 use DateTime;
 use Illuminate\Support\Facades\Storage;
+Use Alert;
 
 class NewsController extends Controller
 {
@@ -30,6 +32,14 @@ class NewsController extends Controller
     {
         return view('dashboard.news.create');
     }
+    // public function check_slug(Request $request){
+    //     // $now = new DateTime();
+    //     // $slug = Str_slug($request->title);
+    //     // $slug = $slug.'-'.$now->format('d-m-Y m-i-s');
+    //     // return response()->json(['slug' => $slug]);
+    //     dd($request->all());
+    //     // return 'none';
+    // }
 
     /**
      * Store a newly created resource in storage.
@@ -55,8 +65,8 @@ class NewsController extends Controller
         $data['image_name']=$filename;
         $data['user_id'] = 1;
         if(News::create($data))
+        toast('Your Post has been created!','success');
         return redirect()->route('news.index');
-
     }
 
     /**
@@ -71,10 +81,7 @@ class NewsController extends Controller
     // }
     public function show(News $news)
     {
-        // return $news->slug;
-        // $news = News::findOrFail($news->id);
-
-        // return $news;
+        $news = News::findOrFail($news->id);
         return view('dashboard.news.show',compact('news'));
     }
 
@@ -86,7 +93,8 @@ class NewsController extends Controller
      */
     public function edit(News $news)
     {
-        //
+        $news = News::findOrFail($news->id);
+        return view('dashboard.news.edit',compact('news'));
     }
 
     /**
@@ -98,7 +106,32 @@ class NewsController extends Controller
      */
     public function update(Request $request, News $news)
     {
-        //
+        $news = News::findOrFail($news->id);
+        $now = new DateTime();
+        $request->validate([
+            'title' => 'required|min:5',
+            'text' => 'required|min:5',
+            'image_name' => 'mimes:jpeg,jpg,png',
+        ]);
+        $slug = Str::slug($request->title, '-');
+        $slug = $slug.'-'.$now->format('d-m-Y m-i-s');
+        $data = $request->all();
+
+        $news->title = $request->title;
+        if ($request->hasFile('image_name')) {
+            Storage::delete('public/cover_image/'.$news->image_name);
+            $news->title = $request->title;
+            $filename = time().'-'.$request->file('image_name')->getClientOriginalName();
+            $request->file('image_name')->storeAs('public/cover_image', $filename);
+
+            $news->image_name = $filename;
+        }
+        $news->slug = $slug;
+        $news->text = $request->text;
+        $news->user_id = 1;
+        $news->update();
+        toast('Your Post has been updated!','success');
+        return redirect()->route('news.index');
     }
 
     /**
@@ -113,6 +146,7 @@ class NewsController extends Controller
         if(Storage::delete('public/cover_image/'.$news->image_name)){
             $news->delete();
         }
+        toast('Your Post has been deleted!','success');
         return redirect()->route('news.index');
     }
 }

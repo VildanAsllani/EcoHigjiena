@@ -72,6 +72,7 @@
 </div>
 @endsection --}}
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -80,22 +81,26 @@
     <title>EcoHigjiena - Login</title>
     <link rel="icon" href="{{asset('images/icon.png')}}">
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
-
+    <link rel="stylesheet" href="{{asset('fontawesome/css/all.css')}}">
 </head>
 <body>
-<div class="login-div">
-    <h1>ECOHIGJIENA</h1>
-    <form method="POST" action="{{ route('login') }}">
-        @csrf
-        <input type="email" placeholder="Email" class="text-input" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-        <input type="password" placeholder="Password" class="text-input" name="password" required autocomplete="current-password">
-        <button type="submit" class="submit-input btn btn-primary">LOGIN</button>
-        @error('email')
-            <span class="invalid-feedback">
-                <strong>{{ $message }}</strong>
-            </span>
-        @enderror
-    </form>
-</div>
+    <div class="login_background">
+        <div class="flex-row">
+            <img src="images/logo.png">
+            <a href="/"><i class="fas fa-arrow-left"></i>Go back to homepage</a>
+        </div>
+        <form method="POST" action="{{ route('login') }}">
+            @csrf
+            <h1>Sign In</h1>
+            <input type="email" placeholder="Email" class="text-input" name="email" required autocomplete="email" autofocus value="{{ old('email') }}">
+            <input type="password" placeholder="Password" class="text-input" name="password" required autocomplete="current-password">
+            <button type="submit" class="submit-input btn btn-primary">Login</button>
+            @error('email')
+                <span class="invalid-feedback">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+        </form>
+    </div>
 </body>
 </html>

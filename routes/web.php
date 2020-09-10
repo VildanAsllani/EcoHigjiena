@@ -25,3 +25,4 @@ Auth::routes();
 Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 
 Route::resource('dashboard/news','NewsController')->middleware('auth');
+// Route::get('/check_slug', 'NewsController@check_slug')->name('news.check_slug');

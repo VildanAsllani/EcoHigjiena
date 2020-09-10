@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\News;
+Use Alert;
 
 class HomeController extends Controller
 {
@@ -25,6 +26,7 @@ class HomeController extends Controller
     public function index()
     {
         // return view('home');
+        // toast('Your Post as been submited!','success');
         $news = News::all();
         return view('dashboard.index',compact('news'));
     }
