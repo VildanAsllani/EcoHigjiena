@@ -31,3 +31,6 @@ Route::resource('dashboard/comments','CommentsController',['only' => ['destroy']
 Route::get('dashboard/confirm/{comments}','CommentsController@confirm')->name('confirm')->middleware('auth');
 
 Route::resource('dashboard/auctions','AuctionsController')->middleware('auth');
+Route::resource('dashboard/gallery','GalleryController',['only' => ['index','store','destroy']])->middleware('auth');
+
+
