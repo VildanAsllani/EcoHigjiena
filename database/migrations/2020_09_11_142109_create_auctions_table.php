@@ -15,6 +15,13 @@ class CreateAuctionsTable extends Migration
     {
         Schema::create('auctions', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
+            $table->string('slug')->unique();
+            $table->text('text');
+            $table->string('image_name');
+            $table->string('attachment_name')->nullable();
+            $table->date('open_until');
+            $table->integer('user_id');
             $table->timestamps();
         });
     }

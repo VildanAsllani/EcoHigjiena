@@ -29,3 +29,5 @@ Route::resource('dashboard/news','NewsController')->middleware('auth');
 
 Route::resource('dashboard/comments','CommentsController',['only' => ['destroy']])->middleware('auth');
 Route::get('dashboard/confirm/{comments}','CommentsController@confirm')->name('confirm')->middleware('auth');
+
+Route::resource('dashboard/auctions','AuctionsController')->middleware('auth');

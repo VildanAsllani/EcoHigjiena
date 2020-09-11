@@ -18,7 +18,7 @@
         <ul>
             <a href="{{route('dashboard')}}"><li class="{{ (request()->is('dashboard')) ? 'li-active' : '' }}">Dashboard<i class="fas fa-home"></i></li></a>
             <a href="{{route('news.index')}}"><li class="{{ (request()->segment(2) == 'news') ? 'li-active' : '' }}">News<i class="fas fa-newspaper"></i></li></a>
-            <a href="#"><li>Auction<i class="fas fa-gavel"></i></li></a>
+            <a href="{{route('auctions.index')}}"><li class="{{ (request()->segment(2) == 'auctions') ? 'li-active' : '' }}">Auction<i class="fas fa-gavel"></i></li></a>
             <a href="#"><li>Messages<i class="fas fa-comment-alt"></i></li></a>
             <a href="#"><li>Gallery<i class="fas fa-images"></i></li></a>
             <a href="#"><li>Subscribers<i class="fas fa-envelope-open-text"></i></li></a>

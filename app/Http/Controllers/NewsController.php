@@ -121,7 +121,7 @@ class NewsController extends Controller
         $news->title = $request->title;
         if ($request->hasFile('image_name')) {
             Storage::delete('public/cover_image/'.$news->image_name);
-            $news->title = $request->title;
+            
             $filename = time().'-'.$request->file('image_name')->getClientOriginalName();
             $request->file('image_name')->storeAs('public/cover_image', $filename);
 
