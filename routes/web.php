@@ -26,3 +26,6 @@ Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 
 Route::resource('dashboard/news','NewsController')->middleware('auth');
 // Route::get('/check_slug', 'NewsController@check_slug')->name('news.check_slug');
+
+Route::resource('dashboard/comments','CommentsController',['only' => ['destroy']])->middleware('auth');
+Route::get('dashboard/confirm/{comments}','CommentsController@confirm')->name('confirm')->middleware('auth');

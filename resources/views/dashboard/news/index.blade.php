@@ -37,7 +37,15 @@
             <tr>
                 <td><img src="{{asset('storage/cover_image/'.$news_item->image_name)}}" alt="Post thumbnail" class="img-cover"></td>
                 <td>{{$news_item->title}}</td>
-                <td>12 comments</td>
+                <td>
+                    <center><h3>{{$news_item->comments->count()}}</h3><br>
+                        @if ($news_item->notConfirmedComments->count()!==0)
+                            <span class="span-new-message">new {{$news_item->notConfirmedComments->count()}}</span>
+                        @endif</center>
+                    {{-- Confirmed={{$news_item->confirmedComments->count()}}<br>
+                    Not confirmed={{$news_item->notConfirmedComments->count()}} --}}
+                </td>
+                {{-- <td>{{$news_item->created_at}}</td> --}}
                 <td>{{$news_item->created_at}}</td>
                 <td><a href="{{route('news.show',$news_item)}}" class="btn btn-default"><i class="far fa-eye"></i></a></td>
             </tr>

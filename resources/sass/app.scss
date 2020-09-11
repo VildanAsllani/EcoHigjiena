@@ -49,8 +49,11 @@ a{
         background-color: $primaryColor;
         color: white;
         i{
-            color: white;
+            color: $primaryColor;
         }
+    }
+    i{
+        color: $primaryColor;
     }
 }
 .btn-primary{
@@ -77,6 +80,9 @@ a{
     color: white;
     transition: all .3s;
     border: none;
+    i{
+        color: white;
+    }
     &:hover{
         opacity: .9;
         color: white;
@@ -1908,6 +1914,28 @@ main{
                     justify-content: space-between;
                 }
             }
+            .comment-section{
+                max-width: 900px;
+                margin:40px auto;
+                display: grid;
+                grid-template-columns: 1fr;
+                grid-row-gap: 10px;
+                .comment{
+                    background-color: white;
+                    padding: 20px;
+                    box-shadow: 0 4px 10px -4px rgb(194, 192, 192);
+                    border-radius: 10px;
+                    .top{
+                        display: flex;
+                        justify-content: space-between;
+                        margin-bottom: 10px;
+                        div a{
+                            font-size:18px;
+                            margin-left: 20px;
+                        }
+                    }
+                }
+            }
         }
     }
 }
@@ -2009,8 +2037,14 @@ main{
 #example{
     .img-cover{
         height: 70px;
-        width:100px;
+        width: 100px;
         object-fit: cover;
+    }
+    .span-new-message{
+        background-color: blue;
+        color: $primaryColor;
+        padding: 5px;
+        color: white;
     }
 }
 

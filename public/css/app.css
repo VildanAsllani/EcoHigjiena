@@ -52,7 +52,11 @@ a {
 }
 
 .btn-default:hover i {
-  color: white;
+  color: #028144;
+}
+
+.btn-default i {
+  color: #028144;
 }
 
 .btn-primary {
@@ -83,6 +87,10 @@ a {
   color: white;
   transition: all 0.3s;
   border: none;
+}
+
+.btn-trash i {
+  color: white;
 }
 
 .btn-trash:hover {
@@ -2128,6 +2136,32 @@ main .main-right .component-gallery .gallery-image {
   justify-content: space-between;
 }
 
+.dashboard .dashboard_content .content .comment-section {
+  max-width: 900px;
+  margin: 40px auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-row-gap: 10px;
+}
+
+.dashboard .dashboard_content .content .comment-section .comment {
+  background-color: white;
+  padding: 20px;
+  box-shadow: 0 4px 10px -4px #c2c0c0;
+  border-radius: 10px;
+}
+
+.dashboard .dashboard_content .content .comment-section .comment .top {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.dashboard .dashboard_content .content .comment-section .comment .top div a {
+  font-size: 18px;
+  margin-left: 20px;
+}
+
 .column_background_color {
   background-color: #F1F1F1;
   transition: box-shadow 0.2s;
@@ -2239,6 +2273,13 @@ main .main-right .component-gallery .gallery-image {
   width: 100px;
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+#example .span-new-message {
+  background-color: blue;
+  color: #028144;
+  padding: 5px;
+  color: white;
 }
 
 .btn-show-back {

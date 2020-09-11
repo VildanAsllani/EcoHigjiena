@@ -21,20 +21,20 @@
 <div class="content">
     <div class="content_stats">
         <div class="column_2">
-            <a href="/">
+            <a href="{{route('news.index')}}">
                 <div class="column_top column_background_color">
                     <h4>News</h4>
                     <h1>12</h1>
                 </div>
             </a>
-            <a href="/">
+            <a href="{{route('auctions.index')}}">
                 <div class="column_bottom column_background_color">
                     <h4>Auctions</h4>
                     <h1>35</h1>
                 </div>
             </a>
         </div>
-        <a href="#">
+        <a href="{{route('news.index')}}">
             <div class="column column_background_color">
                 <div class="column-header"></div>
                 <div class="column-body">

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\News;
+use App\Comments;
 use Validator;
 use Illuminate\Http\Request;
 use Str;

@@ -7,7 +7,7 @@
             @csrf
             @method('PATCH')
             <div class="form-header">
-                <a href="/" class="btn-back"><i class="fas fa-arrow-left"></i></a>
+                <a href="{{route('news.index')}}" class="btn-back"><i class="fas fa-arrow-left"></i></a>
                 <h1 class="faded-text">UPDATE THE POST</h1>
             </div>
             <div class="form-group">
