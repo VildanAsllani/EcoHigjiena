@@ -1,6 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Mail\New_News_Post;
+use App\Mail\New_Auction_Post;
+use App\News;
+use App\Auctions;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +20,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
 
 Route::post('ckeditor/image_upload', 'CKEditorController@upload')->name('upload');
 
@@ -36,5 +41,15 @@ Route::resource('dashboard/gallery','GalleryController',['only' => ['index','sto
 Route::get('dashboard/subscribers','SubscribersController@index')->name('subscribers.index')->middleware('auth');
 Route::delete('dashboard/subscribers/{subscriber}','SubscribersController@destroy')->name('subscribers.destroy');
 
-Route::get('dashboard/users','UserController@index')->name('users.index');
-Route::patch('dashboard/users/{user}','UserController@update')->name('users.update');
+Route::get('dashboard/users','UserController@index')->name('users.index')->middleware('auth');
+Route::patch('dashboard/users/{user}','UserController@update')->name('users.update')->middleware('auth');
+
+Route::get('mail',function(){
+    $news=News::find(2);
+    return new New_News_Post($news);
+});
+
+Route::get('mail-auction',function(){
+    $auctions=Auctions::find(2);
+    return new New_Auction_Post($auctions);
+});

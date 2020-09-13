@@ -4,12 +4,15 @@ namespace App\Http\Controllers;
 
 use App\News;
 use App\Comments;
+use App\Subscribers;
 use Validator;
 use Illuminate\Http\Request;
 use Str;
 use DateTime;
 use Illuminate\Support\Facades\Storage;
 Use Alert;
+use App\Mail\New_News_Post;
+use Mail;
 
 class NewsController extends Controller
 {
@@ -65,8 +68,14 @@ class NewsController extends Controller
         $data['slug'] = $slug.'-'.$now->format('d-m-Y m-i-s');
         $data['image_name']=$filename;
         $data['user_id'] = 1;
-        if(News::create($data))
-        toast('Your Post has been created!','success');
+        if( $news= News::create($data)){
+            $subscribers= Subscribers::all();
+            foreach ($subscribers as $subscriber) {
+            Mail::to($subscriber->email)->send(new New_News_Post($news));
+            }
+            toast('Your Post has been created!','success');
+        }
+
         return redirect()->route('news.index');
     }
 

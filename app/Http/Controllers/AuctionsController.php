@@ -9,6 +9,9 @@ use Str;
 use DateTime;
 use Illuminate\Support\Facades\Storage;
 Use Alert;
+use App\Subscribers;
+use App\Mail\New_Auction_Post;
+use Mail;
 
 class AuctionsController extends Controller
 {
@@ -66,8 +69,13 @@ class AuctionsController extends Controller
         $data['image_name']=$filename;
         $data['user_id'] = 1;
 
-        if(Auctions::create($data))
-        toast('Your Auction has been created!','success');
+        if($auctions = Auctions::create($data)){
+            $subscribers= Subscribers::all();
+            foreach ($subscribers as $subscriber) {
+            Mail::to($subscriber->email)->send(new New_Auction_Post($auctions));
+            }
+            toast('Your Auction has been created!','success');
+        }
         return redirect()->route('auctions.index');
 
     }
