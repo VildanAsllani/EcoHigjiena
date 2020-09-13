@@ -33,4 +33,8 @@ Route::get('dashboard/confirm/{comments}','CommentsController@confirm')->name('c
 Route::resource('dashboard/auctions','AuctionsController')->middleware('auth');
 Route::resource('dashboard/gallery','GalleryController',['only' => ['index','store','destroy']])->middleware('auth');
 
+Route::get('dashboard/subscribers','SubscribersController@index')->name('subscribers.index')->middleware('auth');
+Route::delete('dashboard/subscribers/{subscriber}','SubscribersController@destroy')->name('subscribers.destroy');
 
+Route::get('dashboard/users','UserController@index')->name('users.index');
+Route::patch('dashboard/users/{user}','UserController@update')->name('users.update');

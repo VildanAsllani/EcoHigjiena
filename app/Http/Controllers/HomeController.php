@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\News;
+use App\Auctions;
+use App\Comments;
+use App\Gallery;
+use App\Subscribers;
+
 Use Alert;
 
 class HomeController extends Controller
@@ -28,6 +33,11 @@ class HomeController extends Controller
         // return view('home');
         // toast('Your Post as been submited!','success');
         $news = News::all();
-        return view('dashboard.index',compact('news'));
+        $auctions = Auctions::all();
+        $comments = Comments::all();
+        $notConfirmed = Comments::where('confirmed',0)->count();
+        $gallery = Gallery::all();
+        $subscribers = Subscribers::all();
+        return view('dashboard.index',compact('news','auctions','comments','gallery','subscribers','notConfirmed'));
     }
 }

@@ -23,14 +23,14 @@
         <div class="column_2">
             <a href="{{route('news.index')}}">
                 <div class="column_top column_background_color">
-                    <h4>News</h4>
-                    <h1>12</h1>
+                <h4>News</h4>
+                <h1>{{$news->count()}}</h1>
                 </div>
             </a>
             <a href="{{route('auctions.index')}}">
                 <div class="column_bottom column_background_color">
                     <h4>Auctions</h4>
-                    <h1>35</h1>
+                    <h1>{{$auctions->count()}}</h1>
                 </div>
             </a>
         </div>
@@ -38,104 +38,35 @@
             <div class="column column_background_color">
                 <div class="column-header"></div>
                 <div class="column-body">
-                    <h1>322</h1><small>13 new</small>
-                </div>
-                <div class="column-footer">
-                    <p>Messages</p>
-                </div>
-            </div>
-        </a>
-        <a href="#">
-            <div class="column column_background_color">
-                <div class="column-header"></div>
-                <div class="column-body">
-                    <h1>3245</h1>
-                </div>
-                <div class="column-footer">
-                    <p>Subscribers</p>
-                </div>
-            </div>
-        </a>
-        <a href="#">
-            <div class="column column_background_color">
-                <div class="column-header"></div>
-                <div class="column-body">
-                    <h1>119</h1>
-                </div>
-                <div class="column-footer">
-                    <p>Gallery</p>
-                </div>
-            </div>
-        </a>
-        <a href="#">
-            <div class="column column_background_color">
-                <div class="column-header"></div>
-                <div class="column-body">
-                    <h1>22</h1>
+                    <h1>{{$comments->count()}}</h1><small>{{$notConfirmed}}</small>
                 </div>
                 <div class="column-footer">
                     <p>Comments</p>
                 </div>
             </div>
         </a>
+        <a href="{{route('subscribers.index')}}">
+            <div class="column column_background_color">
+                <div class="column-header"></div>
+                <div class="column-body">
+                <h1>{{$subscribers->count()}}</h1>
+                </div>
+                <div class="column-footer">
+                    <p>Subscribers</p>
+                </div>
+            </div>
+        </a>
+        <a href="{{route('gallery.index')}}">
+            <div class="column column_background_color">
+                <div class="column-header"></div>
+                <div class="column-body">
+                    <h1>{{$gallery->count()}}</h1>
+                </div>
+                <div class="column-footer">
+                    <p>Gallery</p>
+                </div>
+            </div>
+        </a>
     </div>
-    <div class="flex-row">
-        <h3>New Messages</h3>
-        <a href="/">View all</a>
-    </div>
-    <table id="example" class="ui celled table" style="width:100%">
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Arrived time</th>
-                <th>Reply</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Cara Stevens</td>
-                <td>cara@gmail.com</td>
-                <td>20/04/2020 10:23:44</td>
-                <td><a href="#" class="btn btn-default">View</a></td>
-            </tr>
-            <tr>
-                <td>Cara Stevens</td>
-                <td>cara@gmail.com</td>
-                <td>20/04/2020 10:23:44</td>
-                <td><a href="#" class="btn btn-default">View</a></td>
-            </tr>
-            <tr>
-                <td>Cara Stevens</td>
-                <td>cara@gmail.com</td>
-                <td>20/04/2020 10:23:44</td>
-                <td><a href="#" class="btn btn-default">View</a></td>
-            </tr>
-            <tr>
-                <td>Cara Stevens</td>
-                <td>cara@gmail.com</td>
-                <td>20/04/2020 10:23:44</td>
-                <td><a href="#" class="btn btn-default">View</a></td>
-            </tr>
-            <tr>
-                <td>Cara Stevens</td>
-                <td>cara@gmail.com</td>
-                <td>20/04/2020 10:23:44</td>
-                <td><a href="#" class="btn btn-default">View</a></td>
-            </tr>
-            <tr>
-                <td>Cara Stevens</td>
-                <td>cara@gmail.com</td>
-                <td>20/04/2020 10:23:44</td>
-                <td><a href="#" class="btn btn-default">View</a></td>
-            </tr>
-        </tbody>
-        <tfoot>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Arrived time</th>
-            <th>Reply</th>
-        </tfoot>
-    </table>
 </div>
 @endsection
