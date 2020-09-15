@@ -11,9 +11,11 @@
 <script src="https://cdn.datatables.net/1.10.21/js/dataTables.semanticui.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.js"></script>
 <script>
+    
     $(document).ready(function() {
         $('#example').DataTable();
     } );
+
 </script>
 @endpush
 
@@ -69,4 +71,5 @@
         </a>
     </div>
 </div>
+
 @endsection

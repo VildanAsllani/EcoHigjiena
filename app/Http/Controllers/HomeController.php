@@ -8,6 +8,7 @@ use App\Auctions;
 use App\Comments;
 use App\Gallery;
 use App\Subscribers;
+use Illuminate\Support\Facades\DB;
 
 Use Alert;
 
@@ -32,12 +33,12 @@ class HomeController extends Controller
     {
         // return view('home');
         // toast('Your Post as been submited!','success');
-        $news = News::all();
-        $auctions = Auctions::all();
-        $comments = Comments::all();
-        $notConfirmed = Comments::where('confirmed',0)->count();
-        $gallery = Gallery::all();
-        $subscribers = Subscribers::all();
+        // $news = News::all();
+        // $auctions = Auctions::all();
+        // $comments = Comments::all();
+        // $notConfirmed = Comments::where('confirmed',0)->count();
+        // $gallery = Gallery::all();
+        // $subscribers = Subscribers::all();
         return view('dashboard.index',compact('news','auctions','comments','gallery','subscribers','notConfirmed'));
     }
 }
